@@ -4,20 +4,20 @@ variable "create_provider" {
   default = true
 }
 
-variable "workspace_name" {
-  description = "Name of the Bitbucket workspace"
-  type = string
+variable "client_id_list" {
+  description = "List of client IDs (also known as audiences) for the IAM OIDC provider. Defaults to STS service if no values are provided"
+  type        = list(string)
+  default     = []
 }
 
-variable "workspace_uuid" {
-  description = "UUID of the Bitbucket workspace"
-  type = string
+variable "url" {
+  description = "The URL of the identity provider. Corresponds to the iss claim"
+  type        = string
+  default     = "https://token.actions.githubusercontent.com"
 }
 
-variable "additional_thumbprints" {
-  description = "Additional thumbprints"
-  type = list(string)
-  default = []
+variable "tags" {
+  description = "A map of tags to add to the resources created"
+  type        = map(any)
+  default     = {}
 }
-
-
